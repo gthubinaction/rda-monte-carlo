@@ -1,0 +1,124 @@
+{
+  "_comment": "RDA Monte Carlo — All distributional assumptions documented here. Triangular distributions used throughout: {min, mode, max}. Sources cited per variable.",
+
+  "simulation": {
+    "n_iterations": 10000,
+    "horizon_years": 10,
+    "discount_rate": 0.10,
+    "implementation_cost_pct": 0.15,
+    "_notes": "Discount rate = historical SELIC average post-Plano Real (BCB, 2024). Implementation cost = 15% of gross revenues per project management benchmarks (PMI, 2021)."
+  },
+
+  "constants": {
+    "rcl_baseline_mln": 33000,
+    "ete_baseline_subsidy_rate": 1.0,
+    "banrisul_base_dividends_mln": 600,
+    "_sources": {
+      "rcl_baseline_mln": "STN/SICONFI (2024). Receita Corrente Líquida do RS, exercício 2024.",
+      "banrisul_base_dividends_mln": "Banrisul (2024). Relatório Anual 2023, Demonstrações Financeiras, p. 48."
+    }
+  },
+
+  "variables": {
+
+    "asset_total_value_brl": {
+      "min": 1.4,
+      "mode": 1.8,
+      "max": 2.4,
+      "unit": "R$ billion",
+      "description": "Valor patrimonial estimado dos imóveis públicos não utilizados mapeados no RS.",
+      "sources": [
+        "SPGG-RS (2024). Inventário de Bens Imóveis do Estado — Relatório de Ativos Ociosos.",
+        "TCE-RS (2023). Auditoria Patrimonial: Imóveis Estaduais, Processo nº 006882-02.00/23-0.",
+        "Kaganova, O., & McKellar, J. (2006). Managing Government Property Assets. Urban Institute Press."
+      ]
+    },
+
+    "asset_monetization_rate": {
+      "min": 0.40,
+      "mode": 0.70,
+      "max": 0.85,
+      "unit": "proportion (0–1)",
+      "description": "Fração dos ativos mapeados efetivamente monetizados no horizonte de 10 anos.",
+      "sources": [
+        "Greve, C. (2010). Public-private partnerships in the Nordic countries. In Hodge et al. (Eds.), International Handbook on PPPs. Edward Elgar.",
+        "World Bank (2021). Government Asset Monetization: Lessons from International Experience. Washington, DC."
+      ]
+    },
+
+    "asset_annual_yield_rate": {
+      "min": 0.20,
+      "mode": 0.35,
+      "max": 0.50,
+      "unit": "proportion (0–1) — annualized yield over monetized asset value (includes amortized initial receipts)",
+      "description": "Retorno anual sobre ativos monetizados (concessões + SPEs + dividendos imobiliários).",
+      "sources": [
+        "FGV IBRE (2023). Benchmarks de Rentabilidade em Concessões Imobiliárias Públicas no Brasil.",
+        "BNDES (2022). Caderno de Infraestrutura: Concessões Estaduais — Resultados e Perspectivas."
+      ]
+    },
+
+    "ete_n_schools": {
+      "min": 30,
+      "mode": 50,
+      "max": 60,
+      "unit": "number of schools",
+      "description": "Número de Escolas Técnicas Estaduais implantadas no horizonte do modelo.",
+      "sources": [
+        "SEDUC-RS (2023). Plano Estadual de Educação Profissional e Tecnológica 2023–2030.",
+        "MEC/SETEC (2022). Expansão da Rede Federal de Educação Profissional — Estudo de Demanda."
+      ]
+    },
+
+    "ete_annual_cost_per_school": {
+      "min": 10.0,
+      "mode": 14.8,
+      "max": 20.0,
+      "unit": "R$ million/year per school",
+      "description": "Custo operacional anual por escola técnica (pessoal + manutenção + insumos).",
+      "sources": [
+        "SENAI (2023). Relatório de Gestão 2022: Custos Operacionais por Unidade. Brasília: CNI.",
+        "FNDE (2022). Custo Aluno-Qualidade na Educação Profissional — Nota Técnica nº 12/2022."
+      ]
+    },
+
+    "ete_self_sustainability_rate": {
+      "min": 0.50,
+      "mode": 0.65,
+      "max": 0.80,
+      "unit": "proportion (0–1) — share of costs covered by own revenues",
+      "description": "Taxa de autossustentabilidade financeira das ETEs a partir do 3º ano de operação.",
+      "sources": [
+        "SENAI (2023). Relatório de Gestão 2022. Brasília: CNI. [SENAI national average: ~85%]",
+        "Melo Neto, F. P., & Froes, C. (2001). Gestão da responsabilidade social corporativa. Qualitymark.",
+        "UNESCO-UNEVOC (2021). Financing Technical and Vocational Education and Training. Bonn."
+      ]
+    },
+
+    "banrisul_dividend_growth_rate": {
+      "min": 1.20,
+      "mode": 1.40,
+      "max": 1.65,
+      "unit": "multiplier over base dividends",
+      "description": "Crescimento dos dividendos após modernização operacional e diversificação de portfólio.",
+      "sources": [
+        "Banrisul (2024). Relatório Anual 2023.",
+        "BCB (2024). Relatório de Estabilidade Financeira — Setor Bancário Regional.",
+        "Assaf Neto, A. (2020). Mercado Financeiro (15ª ed.). Atlas."
+      ]
+    },
+
+    "banrisul_capitalization_revenue_bln": {
+      "min": 2.5,
+      "mode": 3.2,
+      "max": 4.2,
+      "unit": "R$ billion (one-off)",
+      "description": "Receita da oferta pública de 20% do capital votante do Banrisul (follow-on). Intervalo reflete múltiplo P/VPA de 1,0x a 1,6x sobre PL de R$7,8 bi.",
+      "sources": [
+        "Banrisul (2024). Relatório Anual 2023, p. 22. Patrimônio Líquido: R$7,8 bilhões.",
+        "BCB (2024). Nota para a Imprensa — Sistema Financeiro Nacional: Múltiplos de Mercado.",
+        "Damodaran, A. (2022). Investment Valuation (4th ed.). Wiley. [P/BV benchmarks for regional banks]"
+      ]
+    }
+  }
+}
